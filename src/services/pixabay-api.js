@@ -3,7 +3,6 @@ const BASE_URL = 'pixabay.com/api';
 
 function fetchPixabayImage(image) {
   return fetch(
-    // ` https://pixabay.com/api/?q=cat&page=1&key=${API_KEY}&image_type=photo&orientation=horizontal&per_page=12`
     `https://${BASE_URL}/?q=${image}&page=1&key=${API_KEY}&image_type=photo&orientation=horizontal&per_page=12`
   ).then(response => {
     if (response.ok) {
