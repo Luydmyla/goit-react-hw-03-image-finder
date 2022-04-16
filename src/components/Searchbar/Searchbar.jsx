@@ -4,6 +4,7 @@ import { Component } from 'react';
 // import classNames from 'classnames';
 // бібліотека для повідомлень, типа алертов
 // треба її встановити, заімпортувати тост і тост контейнер(це в апп)
+
 import { toast } from 'react-toastify';
 import './Searchbar.css';
 //  const styles = { form: { marginBottom: 20 } };
@@ -23,17 +24,18 @@ export default class SearchForm extends Component {
     event.preventDefault();
     // при сабміті нашої форми визиваємо метод із АРР (хендлформсабмит), який сюди передався як проп
     // імя пропа може бути яке завгодно, я назвала інсабміт - це не метод, це просто імя пропа
-    this.props.inSubmit(this.state.image);
+    
     // проверяем, если в форму ничего не ввели, или там просто пробелі (метод трим)
     // то ми просто виходимо з цього метода і не самбітимо форму
     if (this.state.image.trim() === '') {
+      console.log('пусто');
       // і показуємо повідомлення
       // alert('введіть  image');
       // визиваємо тост просто як функцію, там де потрібно(у нього там куча настроєк і виглядів, треба почитати доки)
-      toast.error('Введить запит.');
+      toast.error('Введить запит');
       return;
     }
-
+   this.props.inSubmit(this.state.image);
     // this.props.onSubmit(this.state.image) - єто у репеті так назван проп онсабмит;
     // очищаем стейт зразу після сабміта форми
     this.setState({ image: '' });

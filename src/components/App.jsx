@@ -1,5 +1,8 @@
 import { Component } from 'react';
 import SearchForm from 'components/Searchbar'
+// import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 export default class App extends Component {
   state = {
@@ -25,7 +28,8 @@ handleFormSubmit = image => {
       // }}
     >
       <SearchForm  inSubmit={this.handleFormSubmit}/>
-      {/* React homework template */}
+       {/* React homework template */}
+        <ToastContainer autoClose={3000} />
     </div>
   );
 };
