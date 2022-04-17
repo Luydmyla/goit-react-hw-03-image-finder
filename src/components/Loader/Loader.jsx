@@ -1,8 +1,8 @@
-import './Loader.css'
+import './Loader.css';
 
 // взяли иконку из реакт-айкон и просто ей прикрутили анимацию и дали ей цсс клас
 import { ImSpinner9 } from 'react-icons/im';
-import ImageGalleryItem from '../ImageGalleryItem'
+import ImageGalleryItem from '../ImageGalleryItem';
 import pendingImage from './pending.png';
 
 const styles = {
@@ -17,9 +17,9 @@ const styles = {
 export default function Loader({ images }) {
   // ми вручну зробимо такий обєкт зі свойствами, які ми беремо з обєкта лише ті що потрібні
   // це такий скелетон
-    const imageArr = {
+  const imageObj = {
     webformatURL: pendingImage,
-    tags: images.tags,          
+    tags: images.tags,
   };
 
   return (
@@ -30,9 +30,8 @@ export default function Loader({ images }) {
         <ImSpinner9 size="32" className="spinner" />
         Загружаем...
       </div>
-          {/* і тут рендеримо лише з вибраними  обьекта який ми створили */}
-          {images.length !== 0 && <ImageGalleryItem webformatURL={imageArr.webformatURL} tags={imageArr.tags}/>}
-      
+      {/* і тут рендеримо лише з вибраними  обьекта який ми створили */}
+      {images.length !== 0 && <ImageGalleryItem image={imageObj} />}
     </div>
   );
 }

@@ -20,6 +20,7 @@ export default class SearchBar extends Component {
     // то ми просто виходимо з цього метода і не самбітимо форму
     if (this.state.searchImage.trim() === '') {
       // console.log('пусто');
+    
       toast.error('Введить запит');
       return;
     }
