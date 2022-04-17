@@ -7,6 +7,7 @@ import Button from './Button';
 import PixabayImageGallery from './ImageGallery';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+// import * as Scroll from 'react-scroll';
 
 export default class App extends Component {
   state = {
@@ -25,14 +26,11 @@ export default class App extends Component {
     this.setState({ searchImage: searchImage });
   };
 
-  loadImagesBySearchQuery(searchQuery) {
+  loadImagesBySearchImage(searchImage) {
     this.setState({ status: 'pending', images: [] });
-    // const fetchPixabayImage = new FetchPixabayImage();
-    // fetchPixabayImage.fetchImage(nextSearch)
-    // this.icrementPage();
     const { page } = this.state;
     pixabayAPI
-      .fetchPixabayImage(searchQuery, page)
+      .fetchPixabayImage(searchImage, page)
       // якщо все добре, то ми міняємо статус на резолвд
       .then(images => {
         console.log(images);
@@ -67,8 +65,9 @@ export default class App extends Component {
           );
         }
         console.log('a', { images, response: response.hits });
+
         this.setState({
-          images: [...images, ...response.hits],
+          images: [...response.hits, ...images],
           status: 'resolved',
         });
       })
@@ -86,14 +85,14 @@ export default class App extends Component {
       console.log('змінився запрос');
       // console.log('попередній стейт :', prevSearch);
       // console.log('текущий стейт : ', nextSearch);
-      this.loadImagesBySearchQuery(nextSearch);
+      this.loadImagesBySearchImage(nextSearch);
     }
 
     const prevPage = prevState.page;
     const nextPage = this.state.page;
 
     if (prevPage !== nextPage) {
-      console.log('змінився');
+      console.log('змінився номер сторінки');
       this.loadMoreImages(nextPage);
     }
   }
@@ -120,6 +119,17 @@ export default class App extends Component {
       page: prevState.page + 1,
     }));
   }
+  onButtonUp(e) {
+    e.preventDefault();
+    console.log('скролл');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  // Scroll() {
+  //   let Scroll = require('react-scroll');
+  //   let scroll = Scroll.animateScroll;
+  //   scroll.scrollToBottom();
+  // }
+
   render() {
     const { images, status, error } = this.state;
     return (
@@ -141,9 +151,14 @@ export default class App extends Component {
         )}
         {status === 'resolved' && (
           <div>
-            {images && (
+            {images.length !== 0 && (
               <>
-                <PixabayImageGallery images={images} />
+                <PixabayImageGallery
+                  images={images}
+                  // onScroll={() => this.Scroll()}
+                  // style={{ transition: 'ease 0.5s' }}
+                />
+
                 <Button onClick={() => this.onButtonClick()} />
               </>
             )}
