@@ -4,7 +4,7 @@ import SearchBar from 'components/Searchbar'
 import Loader from './Loader';
 import PixabayImageGallery from './ImageGallery'
 import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default class App extends Component {
   state = {
@@ -13,7 +13,8 @@ export default class App extends Component {
     // статус - ідле -ничего не делает, простой - стоит на месте
     status: 'idle',
     searchImage: '',
-   images: [],
+    images: [],
+   
   };
 
 handleFormSubmit = searchImage => {
@@ -44,7 +45,8 @@ componentDidUpdate(prevProps, prevState) {
         //  в кінці запиту змінюємо лоадінг на фолс, щоб не видно було
         .finally(() => this.setState({ loading: false }));
       }
-  }
+}
+  
   render() {
     const { images, status, error } = this.state;
     return(
