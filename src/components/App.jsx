@@ -3,7 +3,7 @@ import pixabayAPI from '../services/pixabay-api';
 // import FetchPixabayImage from '../services/pixabay-api'
 import SearchBar from 'components/Searchbar';
 import Loader from './Loader';
-import Button from './Button';
+import ButtonLoadMore from './Button';
 import PixabayImageGallery from './ImageGallery';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -136,7 +136,7 @@ export default class App extends Component {
         )}
         {status === 'resolved' && (
           <div>
-            <Button onClick={() => this.onButtonClick()} />
+            <ButtonLoadMore onClick={() => this.onButtonClick()} />
           </div>
         )}
       </div>

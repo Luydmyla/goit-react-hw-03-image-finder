@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
-import './Button.css';
-export default function Button({ onClick }) {
+import './Button.styled.js';
+import { ButtonContainer, Button } from './Button.styled.js';
+
+export default function ButtonLoadMore({ onClick }) {
   return (
-    <div className="Button-container">
-      <button type="button" onClick={onClick} className="Button">
+    <ButtonContainer className="Button-container">
+      <Button type="button" onClick={onClick}>
         Load more...
-      </button>
-    </div>
+      </Button>
+    </ButtonContainer>
   );
 }
 
