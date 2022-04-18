@@ -37,7 +37,7 @@ export default class App extends Component {
       // console.log('змінився номер сторінки');
       this.loadMoreImages(nextPage);
     }
-    // this.scrollToBottom();
+    this.scrollToBottom();
   }
 
   handleFormSubmit = searchImage => {

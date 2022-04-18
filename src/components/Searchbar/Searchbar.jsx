@@ -22,7 +22,7 @@ export default class SearchBar extends Component {
     if (this.state.searchImage.trim() === '') {
       // console.log('пусто');
 
-      toast.error('Введить запит');
+      toast.error('Please enter your query');
       return;
     }
     this.props.inSubmit(this.state.searchImage);
