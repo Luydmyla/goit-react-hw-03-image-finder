@@ -8,58 +8,14 @@ function fetchPixabayImage(image, page) {
     if (response.ok) {
       return response.json();
     }
-    return Promise.reject(new Error(`Немає картинки по запиту ${image}`));
+    return Promise.reject(
+      new Error(
+        `Sorry, there are no images matching your search query ${image}. Please try again `
+      )
+    );
   });
 }
-
 const pixabayAPI = {
   fetchPixabayImage,
 };
-
 export default pixabayAPI;
-
-// export default class FetchPixabayImage {
-//   constructor() {
-//     this.searchImage = '';
-//     this.page = 1;
-//     this.per_page = 12;
-//   }
-//   fetchImage() {
-//     const params = new URLSearchParams({
-//       q: this.searchImage,
-//       key: API_KEY,
-//       image_type: 'photo',
-//       orientation: 'horizontal',
-//       safesearch: true,
-//       per_page: this.per_page,
-//       page: this.page,
-//     });
-//     this.icrementPage();
-//     fetch(`https://${BASE_URL}/?${params}`).then(response => {
-//       if (response.ok) {
-//         return response.json();
-//       }
-//       return Promise.reject(
-//         new Error(`Немає картинки по запиту ${this.searchImage}`)
-//       );
-//     });
-//   }
-//   icrementPage() {
-//     this.page += 1;
-//   }
-//   resetPage() {
-//     this.page = 1;
-//   }
-//   get query() {
-//     return this.searchQuery;
-//   }
-//   set query(newQuery) {
-//     this.query = newQuery;
-//   }
-// }
-
-// const pixabayAPI = {
-//   FetchPixabayImage,
-// };
-
-// export default pixabayAPI;

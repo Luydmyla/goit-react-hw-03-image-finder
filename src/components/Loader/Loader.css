@@ -16,3 +16,13 @@
         transform: rotate(359deg);
     }
 }
+ .spinner-container {
+        display: flex;
+        display: flex;
+        justify-content: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+            align-items: center;
+               font-size: 24px;
+    }
+

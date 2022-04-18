@@ -1,9 +1,10 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import './Searchbar.css';
 
 export default class SearchBar extends Component {
-    state = {
+  state = {
     searchImage: '',
   };
   // обновляє стейт при кожному нажатии в инпуті
@@ -20,13 +21,13 @@ export default class SearchBar extends Component {
     // то ми просто виходимо з цього метода і не самбітимо форму
     if (this.state.searchImage.trim() === '') {
       // console.log('пусто');
-    
+
       toast.error('Введить запит');
       return;
     }
-   this.props.inSubmit(this.state.searchImage);
+    this.props.inSubmit(this.state.searchImage);
     // очищаем стейт зразу після сабміта форми
-    this.setState({ searchImage: '' });
+    // this.setState({ searchImage: '' });
   };
 
   render() {
@@ -48,6 +49,9 @@ export default class SearchBar extends Component {
           />
         </form>
       </header>
-   );
+    );
   }
 }
+SearchBar.propTypes = {
+  searchImage: PropTypes.string,
+};
