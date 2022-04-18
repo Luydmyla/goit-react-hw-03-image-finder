@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 // імпортуем метод для створення портала для модалки
 import { createPortal } from 'react-dom';
-import './Modal.css';
+// import './Modal.styled.js';
+import { Overlay, ImageModal } from './Modal.styled.js';
 // вибираємо по селектору айди
 const modalRoot = document.querySelector('#modal-root');
 
@@ -39,9 +40,9 @@ export default class Modal extends Component {
     //   визиваємо метод криейтпортал и передаемо йому разметку модалки, яку треба зарендерить та другим аргументом -
     // квериселектор - куди треба цю модалку зарендерить
     return createPortal(
-      <div className="Overlay" onClick={this.handleBackdropClick}>
-        <div className="Modal">{this.props.children}</div>
-      </div>,
+      <Overlay onClick={this.handleBackdropClick}>
+        <ImageModal>{this.props.children}</ImageModal>
+      </Overlay>,
       modalRoot
     );
   }

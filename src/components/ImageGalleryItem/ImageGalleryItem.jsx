@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './ImageGalleryItem.css';
+
+import { ImageItem, ImageGalleryItemImage } from './ImageGalleryItem.styled.js';
 import Modal from '../Modal';
 
 export default class ImageGalleryItem extends Component {
@@ -19,14 +20,9 @@ export default class ImageGalleryItem extends Component {
     } = this.props;
     return (
       <>
-        <li onClick={this.toggleModal} className="ImageGalleryItem">
-          <img
-            src={webformatURL}
-            alt={tags}
-            loading="lazy"
-            className="ImageGalleryItem-image"
-          />
-        </li>
+        <ImageItem onClick={this.toggleModal}>
+          <ImageGalleryItemImage src={webformatURL} alt={tags} loading="lazy" />
+        </ImageItem>
         {showModal && (
           <Modal onClose={this.toggleModal}>
             <img src={largeImageURL} alt={tags} loading="lazy" />
@@ -36,6 +32,7 @@ export default class ImageGalleryItem extends Component {
     );
   }
 }
+
 ImageGalleryItem.propTypes = {
   webformatURL: PropTypes.string,
   tags: PropTypes.string,

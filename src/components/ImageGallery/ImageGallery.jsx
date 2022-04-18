@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ImageGalleryItem from '../ImageGalleryItem';
-import './ImageGallery.css';
+// import './ImageGallery.styled.js';
+import { ImageGallery } from './ImageGallery.styled.js';
 
 export default function PixabayImageGallery({ images }) {
   console.log(images);
   return (
     <div>
-      <ul className="ImageGallery">
+      <ImageGallery>
         {images.map(image => (
           <ImageGalleryItem key={image.id} image={image} />
         ))}
-      </ul>
+      </ImageGallery>
     </div>
   );
 }
